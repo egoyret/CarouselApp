@@ -15,7 +15,7 @@ This app contains a carousel with will display various pictures.
 
 You can navigate using the next and previous buttons and also scroll with your finger.
 
-If have reached teh last picture of the carousel, the Next button will appear disabled.
+If you have reached the last picture of the carousel, the Next button will appear disabled.
 
 Same thing happens with the Previous button when you reach the begining of the carousel.
 
