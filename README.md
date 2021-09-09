@@ -3,10 +3,10 @@ This is a carousel app developed in React Native that can run in any mobile devi
 
 To run de app you must run the following from a folder on your machine:
 
-git clone https://github.com/egoyret/CarouselApp
-cd CarouselApp
-npm i
-expo start
+  git clone https://github.com/egoyret/CarouselApp
+  cd CarouselApp
+  npm i
+  expo start
 
 On your phone you should install the expo app (Apple store or Playstore)
 
