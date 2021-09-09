@@ -17,20 +17,10 @@ export default function Home() {
   const { container } = globalStyles;
   const { flexView } = sliderStyles;
 
-const cant = 3;  
-//const [current, setCurrent] = useState(0);
-var current = 0
-//var end = current + cant;
-var end = DATA.length;
-const [datascr, setDatascr] = useState(DATA.slice(current, end));
-console.log('datascr: ',datascr);
- function nextslide(){
-   end = current + cant + cant;
-   current = current + cant;
-  // setCurrent(current + cant);
-   setDatascr(DATA.slice(current,end))
-console.log('current: ', current, end);
- }
+
+const [datascr, setDatascr] = useState(DATA);
+//console.log('datascr: ',datascr);
+
 
 // Initial states of slide index and slides
 const [currentIndex, setCurrentIndex] = useState(0)
@@ -124,7 +114,7 @@ useEffect(() => {
               currentIndex={currentIndex}
               direction="previous"
               scrollToPrevious={ScrollToPrevious}
-              percentage={(currentIndex + 1) * (100 / datascr.length)}
+              
             />
          {/* Scroll to next button */}
             <ScrollButton
@@ -132,7 +122,7 @@ useEffect(() => {
               currentIndex={currentIndex}
               direction="next"
               scrollToNext={ScrollToNext}
-              percentage={(currentIndex + 1) * (100 / datascr.length)}
+              
             />
       </View>
 
