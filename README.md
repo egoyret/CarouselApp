@@ -1,25 +1,23 @@
 # CarouselApp
-Desarrollo de un Carousel en React Native (Challenge para ingresar a Puzzle)
+This is a carousel app developed in React Native that can run in any mobile device (IOS or Android)
 
-Setup inicial:
+To run de app you must run the following from a folder on your machine:
 
-// Instalamos expo-cli npm install -g expo-cli
+git clone https://github.com/egoyret/CarouselApp
+cd CarouselApp
+npm i
+expo start
 
-// Inicializamos nuestro proyecto al que llamaremos CarouselApp expo init CarouselApp
+On your phone you should install the expo app (Apple store or Playstore)
 
-Es posible que en este paso se produzca un error del tipo "expo : No se puede cargar el archivo....porque la ejecución de scripts está deshabilitada en este sistema..." 
-Si este es el caso hay que habilitar la ejecución de scripts al menos para que se pueda ejecutar el comando de inicializacion de expo. 
-Proceder de la siguiente manera (para windows) y luego volver a ejecutar el comando de inicialización:
+Description
+This app contains a carousel with will display various pictures.
 
-Arrancar Powershell ejecutando como administrador. 
-Tipear el siguiente comando para ver el status: get-executionpolicy -List
+You can navigate using the next and previous buttons and also scroll with your finger.
 
-Para permitir la ejecucion de scripts tipear: 
-set-executionpolicy -ExecutionPolicy Bypass -Scope LocalMachine (responder con S al prompt)
+If have reached teh last picture of the carousel, the Next button will appear disabled.
 
-Volver a ver el status: 
-get-executionpolicy -List (debe verse local machine con policy Bypass)
+Same thing happens with the Previous button when you reach the begining of the carousel.
 
-Salir del Powershell tipeando: exit
+If you close and reopen the app, the carousel starts with the position of the last picture displayed.
 
-// Probamos su funcionamiento cd CarouselApp npm start
