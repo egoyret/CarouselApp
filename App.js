@@ -5,7 +5,7 @@ import globalStyles from "./styles/globalStyles";
 
 
 export default function App() {
-  const { container, brandName } = globalStyles;
+  const { container } = globalStyles;
   return (
    <View style={container}>
      <Home/>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
-
-import { ScrollView, Text,  View, Image, StyleSheet, FlatList, Button, Alert } from 'react-native';
+import {  View, FlatList } from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import DATA from '../data/data.js'
 import DataCard from '../components/DataCard.js';
@@ -9,20 +9,16 @@ import ScrollButton from '../components/ScrollButton.js';
 // StyleSheets
 import sliderStyles from "../styles/SliderStyles";
 import globalStyles from "../styles/globalStyles";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
 
 export default function Home() {
-  // Extraer los estilos que se van a usar
+  // Extract styles to use
   const { container } = globalStyles;
   const { flexView } = sliderStyles;
 
+  //const [datascr, setDatascr] = useState(DATA);
+  const datascr = DATA ;
 
-const [datascr, setDatascr] = useState(DATA);
-//console.log('datascr: ',datascr);
-
-
-// Initial states of slide index and slides
+// Initial states of card index and cards
 const [currentIndex, setCurrentIndex] = useState(0)
 const [value, setValue] = useState("");
 
@@ -47,20 +43,20 @@ const setLastIndexToStorage = async (index) => {
   }
 };
 
- // Function to move the slider to the next slide
+ // Function to move the carousel to the next card
  const ScrollToNext = async () => {
-   // If there are one or more slides left to go, increment the current index by 1
+   // If there are one or more cards left to go, increment the current index by 1
    if (currentIndex < datascr.length - 1) {
        slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
    }
    if (currentIndex >= 0) {
-       setLastIndexToStorage(currentIndex + 1);
+       setLastIndexToStorage(currentIndex + 3);
    }
  };
 
- // Function to move the slider to the previous slide
+ // Function to move the carousel to the previous card
  const ScrollToPrevious = () => {
-    // If there are one or more slides left to go back, decrement the current index by 1
+    // If there are one or more cards left to go back, decrement the current index by 1
     if (currentIndex > 0) {
         slidesRef.current.scrollToIndex({ index: currentIndex - 1 });
     }
@@ -90,7 +86,7 @@ useEffect(() => {
   return (
     <View style={container}>
       <View style={flexView}>
-      {/* Renderiza el carrousel */}
+      {/* Renderize carousel */}
         <FlatList
          data={datascr}
          renderItem={({item, index}) => 
@@ -125,39 +121,7 @@ useEffect(() => {
               
             />
       </View>
-
-
-
     </View>
-     
-   
+      
   );
 }
-
-{/* <View  style={styles.container}>
-<Image style={styles.image} source={{uri: item.imageUrl}} />
-<Text style={styles.font}>{item.title}</Text>
-</View>
- */}
-
-
-//{ data.map((item, index) => {
-//  <DataCard 
-//   id={index}
-//   image={item.imageUrl} 
-//   name={item.title} />
-//})
-//}
-
-
-
-{/* <ScrollView>
-{data.map((item, index) => {
-  <View key={index}>
-      <Image style={styles.image} source={{uri: item.imageUrl}}/>
-      <Text style={styles.font}>{item.title}</Text>
-  </View> 
-})
-}
-</ScrollView>    */}
-

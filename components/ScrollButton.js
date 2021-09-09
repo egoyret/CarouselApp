@@ -12,7 +12,6 @@ const NextButton = ({
     direction,
     scrollToNext,
     scrollToPrevious,
-    percentage,
     currentIndex,
     slidesLength,
 }) => {
@@ -29,28 +28,23 @@ const NextButton = ({
 
     const scrollNext3times = () => {
         scrollToNext();
-        scrollToNext();
-        scrollToNext();
     }
 
     const scrollPrev3times = () => {
         scrollToPrevious();
-        scrollToPrevious();
-        scrollToPrevious();
     }
-
 
     return (
         <View style={container}>
  
-            {/* The button to scroll the slider */}
+            {/* The button to scroll the carousel */}
             <TouchableOpacity
                 // Function call depending on the direction
                 onPress={direction === "next" ? scrollNext3times : scrollPrev3times}
                 style={[button, ifDisabled && { backgroundColor: "gray" }]}
                 activeOpacity={0.6}
                 // disabled if no slides to move in the requested direction
-                // disabled={ifDisabled}
+                disabled={ifDisabled}
             >
                 {/* Icon */}
                 <AntDesign
