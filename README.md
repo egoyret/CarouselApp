@@ -13,6 +13,10 @@ To run de app you must run the following from a folder on your machine:
 
 On your phone you should install the expo app (Apple store or Playstore)
 
+Demo video:
+https://youtu.be/JCMnw8s7SPQ
+
+
 Description
 This app contains a carousel with will display various pictures.
 
