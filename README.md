@@ -16,6 +16,8 @@ On your phone you should install the expo app (Apple store or Playstore)
 Demo video:
 https://youtu.be/JCMnw8s7SPQ
 
+This video is also stored as a file (Carousel.mp4) on this repo.
+
 
 Description
 This app contains a carousel with will display various pictures.
