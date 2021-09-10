@@ -28,3 +28,5 @@ Same thing happens with the Previous button when you reach the begining of the c
 
 If you close and reopen the app, the carousel starts with the position of the last picture displayed.
 
+For this sample there are 10 pictures loaded on a local json file
+
