@@ -9,6 +9,7 @@ const data =
 {title: "Picture 7", imageUrl: "https://picsum.photos/id/17/200/300"},
 {title: "Picture 8", imageUrl: "https://picsum.photos/id/18/200/300"},
 {title: "Picture 9", imageUrl: "https://picsum.photos/id/19/200/300"},
+{title: "Picture 10", imageUrl: "https://picsum.photos/id/20/200/300"},
 
 ];
 

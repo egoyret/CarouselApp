@@ -27,7 +27,7 @@ const slidesRef = useRef(null)
 const onViewableItemsChanged = useRef(({ viewableItems }) => {
             // If items change change the current index of the slides
             setCurrentIndex(viewableItems[0].index);
-        }).current;
+         }).current;
 
 // Sets the index to AsyncStorage
 const setLastIndexToStorage = async (index) => {
@@ -46,24 +46,31 @@ const setLastIndexToStorage = async (index) => {
  // Function to move the carousel to the next card
  const ScrollToNext = async () => {
    // If there are one or more cards left to go, increment the current index by 1
-   if (currentIndex < datascr.length - 1) {
-       slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
-   }
-   if (currentIndex >= 0) {
+   if (currentIndex < datascr.length - 3) {
+       slidesRef.current.scrollToIndex({ index: currentIndex + 3 });
        setLastIndexToStorage(currentIndex + 3);
    }
+   else
+   {
+    slidesRef.current.scrollToIndex({ index: datascr.length-1 });
+    setLastIndexToStorage(datascr.length-1);
+   }
+   
  };
 
  // Function to move the carousel to the previous card
  const ScrollToPrevious = () => {
     // If there are one or more cards left to go back, decrement the current index by 1
-    if (currentIndex > 0) {
-        slidesRef.current.scrollToIndex({ index: currentIndex - 1 });
+    if (currentIndex > 2) {
+        slidesRef.current.scrollToIndex({ index: currentIndex - 3 });
+        setLastIndexToStorage(currentIndex - 3);
     }
-    if (currentIndex >= 0) {
-        setLastIndexToStorage(currentIndex - 1);
+    else
+    {
+      slidesRef.current.scrollToIndex({ index: 0 });
+      setLastIndexToStorage(0);
     }
- };
+  };
 
 // Get the index that was lastly viewed the last time the app closed
 useEffect(() => {
@@ -72,7 +79,6 @@ useEffect(() => {
          const lastViewedIndex = await AsyncStorage.getItem(
              "@lastViewedIndex"
          );
-
          // If the last viewed index was set
          if (lastViewedIndex) {
              setValue(lastViewedIndex);
@@ -97,9 +103,16 @@ useEffect(() => {
          }
          horizontal
          initialScrollIndex={parseInt(value)}
+         initialNumToRender={20}
          keyExtractor={item => item.title}
          onViewableItemsChanged={onViewableItemsChanged}
          ref={slidesRef}
+         onScrollToIndexFailed={info => {
+          const wait = new Promise(resolve => setTimeout(resolve, 500));
+          wait.then(() => {
+            slidesRef.current?.scrollToIndex({ index: info.index, animated: true });
+          });
+        }}
         />
       </View>
       {/* Scroll Buttons */}
